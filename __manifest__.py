@@ -33,7 +33,7 @@ quantity and planned date. Customers with nothing pending get no e-mail.
 Customers can be excluded one by one, the e-mail is an editable template,
 and the report can also be sent manually from the customer.
 """,
-    'version': "19.0.1.0.0",
+    'version': "19.0.1.0.1",
     'author': "Hadron for Business sp. z o.o.",
     'website': "http://hadronforbusiness.com",
     'license': "OPL-1",
