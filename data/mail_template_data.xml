@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="mail_template_backorder_report" model="mail.template">
+            <field name="name">Customer: Backorder Report</field>
+            <field name="model_id" ref="base.model_res_partner"/>
+            <field name="subject">{{ object.env.company.name }} - products not delivered yet</field>
+            <field name="partner_to">{{ object.id }}</field>
+            <field name="lang">{{ object.lang }}</field>
+            <field name="body_html" type="html">
+<div style="margin: 0px; padding: 0px;">
+    <p>Dear <t t-out="object.name or ''">customer</t>,</p>
+    <t t-set="lines" t-value="object.get_backorder_report_lines()"/>
+    <p>Here is the list of products ordered from us that have not been delivered yet:</p>
+    <table style="border-collapse: collapse; width: 100%;">
+        <tr style="background-color: #f2f2f2;">
+            <th style="text-align: left; padding: 6px; border-bottom: 1px solid #ddd;">Order</th>
+            <th style="text-align: left; padding: 6px; border-bottom: 1px solid #ddd;">Product</th>
+            <th style="text-align: right; padding: 6px; border-bottom: 1px solid #ddd;">Quantity</th>
+            <th style="text-align: left; padding: 6px; border-bottom: 1px solid #ddd;">Planned Date</th>
+            <th style="text-align: left; padding: 6px; border-bottom: 1px solid #ddd;">Status</th>
+        </tr>
+        <t t-foreach="lines" t-as="line">
+            <tr>
+                <td style="padding: 6px; border-bottom: 1px solid #eee;" t-out="line['order']">S00001</td>
+                <td style="padding: 6px; border-bottom: 1px solid #eee;" t-out="line['product']">Product</td>
+                <td style="padding: 6px; border-bottom: 1px solid #eee; text-align: right;"><t t-out="line['qty']">1</t> <t t-out="line['uom']">Units</t></td>
+                <td style="padding: 6px; border-bottom: 1px solid #eee;" t-out="format_date(line['date'])">2026-10-01</td>
+                <td style="padding: 6px; border-bottom: 1px solid #eee;" t-out="line['status']">Waiting for stock</td>
+            </tr>
+        </t>
+    </table>
+    <p>Planned dates may change. If you have any question, please contact your salesperson.</p>
+</div>
+            </field>
+            <field name="auto_delete" eval="True"/>
+        </record>
+
+    </data>
+</odoo>
