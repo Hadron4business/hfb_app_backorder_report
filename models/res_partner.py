@@ -16,7 +16,7 @@
 # all copies or substantial portions of the Software.
 #
 #################################################################################
-"""	@version	19.0.1.0.0
+"""	@version	20.0.1.0.0
 	@owner  Hadron for Business
 	@author Hadron for Business sp. z o.o.
 	@date   2026.10.08
@@ -57,7 +57,7 @@ class ResPartner(models.Model):
             'order': move.picking_id.origin or move.picking_id.name,
             'product': move.product_id.with_context(lang=lang).display_name,
             'qty': move.product_uom_qty,
-            'uom': move.product_uom.with_context(lang=lang).name,
+            'uom': move.uom_id.with_context(lang=lang).name,
             'date': move.date,
             'status': ready if move.state == 'assigned' else waiting,
         } for move in self._backorder_moves()]
