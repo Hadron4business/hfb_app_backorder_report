@@ -1,0 +1,200 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* hfb_app_backorder_report
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 20.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-08 11:04+0000\n"
+"PO-Revision-Date: 2026-10-08 11:04+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: pl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#. module: hfb_app_backorder_report
+#: model:ir.module.module,description:base.module_hfb_app_backorder_report
+msgid ""
+"\n"
+"Backorder Report for Customers\n"
+"==============================\n"
+"\n"
+"When part of an order is still waiting for stock, customers do not know what\n"
+"is still coming and when - so they call or write to the salesperson.\n"
+"\n"
+"This app sends every customer, on a schedule (weekly by default), one e-mail\n"
+"listing everything not yet delivered to them: order reference, product,\n"
+"quantity and planned date. Customers with nothing pending get no e-mail.\n"
+"Customers can be excluded one by one, the e-mail is an editable template,\n"
+"and the report can also be sent manually from the customer.\n"
+msgstr ""
+
+#. module: hfb_app_backorder_report
+#: model:mail.template,body_html:hfb_app_backorder_report.mail_template_backorder_report
+msgid ""
+"<div style=\"margin: 0px; padding: 0px;\">\n"
+"    <p>Dear <t t-out=\"object.name or ''\">customer</t>,</p>\n"
+"    <t t-set=\"lines\" t-value=\"object.get_backorder_report_lines()\"/>\n"
+"    <p>Here is the list of products ordered from us that have not been delivered yet:</p>\n"
+"    <table style=\"border-collapse: collapse; width: 100%;\">\n"
+"        <tr style=\"background-color: #f2f2f2;\">\n"
+"            <th style=\"text-align: left; padding: 6px; border-bottom: 1px solid #ddd;\">Order</th>\n"
+"            <th style=\"text-align: left; padding: 6px; border-bottom: 1px solid #ddd;\">Product</th>\n"
+"            <th style=\"text-align: right; padding: 6px; border-bottom: 1px solid #ddd;\">Quantity</th>\n"
+"            <th style=\"text-align: left; padding: 6px; border-bottom: 1px solid #ddd;\">Planned Date</th>\n"
+"            <th style=\"text-align: left; padding: 6px; border-bottom: 1px solid #ddd;\">Status</th>\n"
+"        </tr>\n"
+"        <t t-foreach=\"lines\" t-as=\"line\">\n"
+"            <tr>\n"
+"                <td style=\"padding: 6px; border-bottom: 1px solid #eee;\" t-out=\"line['order']\">S00001</td>\n"
+"                <td style=\"padding: 6px; border-bottom: 1px solid #eee;\" t-out=\"line['product']\">Product</td>\n"
+"                <td style=\"padding: 6px; border-bottom: 1px solid #eee; text-align: right;\"><t t-out=\"line['qty']\">1</t> <t t-out=\"line['uom']\">Units</t></td>\n"
+"                <td style=\"padding: 6px; border-bottom: 1px solid #eee;\" t-out=\"format_date(line['date'])\">2026-10-01</td>\n"
+"                <td style=\"padding: 6px; border-bottom: 1px solid #eee;\" t-out=\"line['status']\">Waiting for stock</td>\n"
+"            </tr>\n"
+"        </t>\n"
+"    </table>\n"
+"    <p>Planned dates may change. If you have any question, please contact your salesperson.</p>\n"
+"</div>\n"
+"            "
+msgstr ""
+"<div style=\"margin: 0px; padding: 0px;\">\n"
+"    <p>Dzień dobry, <t t-out=\"object.name or ''\">customer</t>,</p>\n"
+"    <t t-set=\"lines\" t-value=\"object.get_backorder_report_lines()\"/>\n"
+"    <p>Poniżej lista zamówionych u nas produktów, które nie zostały jeszcze wydane:</p>\n"
+"    <table style=\"border-collapse: collapse; width: 100%;\">\n"
+"        <tr style=\"background-color: #f2f2f2;\">\n"
+"            <th style=\"text-align: left; padding: 6px; border-bottom: 1px solid #ddd;\">Zamówienie</th>\n"
+"            <th style=\"text-align: left; padding: 6px; border-bottom: 1px solid #ddd;\">Produkt</th>\n"
+"            <th style=\"text-align: right; padding: 6px; border-bottom: 1px solid #ddd;\">Ilość</th>\n"
+"            <th style=\"text-align: left; padding: 6px; border-bottom: 1px solid #ddd;\">Planowana data</th>\n"
+"            <th style=\"text-align: left; padding: 6px; border-bottom: 1px solid #ddd;\">Status</th>\n"
+"        </tr>\n"
+"        <t t-foreach=\"lines\" t-as=\"line\">\n"
+"            <tr>\n"
+"                <td style=\"padding: 6px; border-bottom: 1px solid #eee;\" t-out=\"line['order']\">S00001</td>\n"
+"                <td style=\"padding: 6px; border-bottom: 1px solid #eee;\" t-out=\"line['product']\">Product</td>\n"
+"                <td style=\"padding: 6px; border-bottom: 1px solid #eee; text-align: right;\"><t t-out=\"line['qty']\">1</t> <t t-out=\"line['uom']\">Units</t></td>\n"
+"                <td style=\"padding: 6px; border-bottom: 1px solid #eee;\" t-out=\"format_date(line['date'])\">2026-10-01</td>\n"
+"                <td style=\"padding: 6px; border-bottom: 1px solid #eee;\" t-out=\"line['status']\">Waiting for stock</td>\n"
+"            </tr>\n"
+"        </t>\n"
+"    </table>\n"
+"    <p>Planowane daty mogą się zmienić. W razie pytań prosimy o kontakt z opiekunem handlowym.</p>\n"
+"</div>\n"
+"            "
+
+#. module: hfb_app_backorder_report
+#: model:ir.module.module,summary:base.module_hfb_app_backorder_report
+msgid ""
+"Automatically e-mail each customer the list of products still waiting to be "
+"delivered"
+msgstr ""
+"Automatycznie wysyła każdemu klientowi listę produktów, które jeszcze "
+"czekają na wydanie"
+
+#. module: hfb_app_backorder_report
+#: model:ir.module.module,shortdesc:base.module_hfb_app_backorder_report
+msgid "Backorder Report for Customers"
+msgstr "Raport zaległych dostaw dla klientów"
+
+#. module: hfb_app_backorder_report
+#: model:ir.actions.server,name:hfb_app_backorder_report.ir_cron_backorder_report_ir_actions_server
+msgid "Backorder Report: e-mail customers"
+msgstr "Raport zaległych dostaw: e-maile do klientów"
+
+#. module: hfb_app_backorder_report
+#. odoo-python
+#: code:addons/hfb_app_backorder_report/models/res_partner.py:0
+msgid "Backorder report sent."
+msgstr "Wysłano raport zaległych dostaw."
+
+#. module: hfb_app_backorder_report
+#. odoo-python
+#: code:addons/hfb_app_backorder_report/models/res_partner.py:0
+msgid "Being prepared"
+msgstr "W przygotowaniu"
+
+#. module: hfb_app_backorder_report
+#: model:ir.model,name:hfb_app_backorder_report.model_res_company
+msgid "Company"
+msgstr "Firma"
+
+#. module: hfb_app_backorder_report
+#: model:ir.model,name:hfb_app_backorder_report.model_res_config_settings
+msgid "Config Settings"
+msgstr "Konfiguracja ustawień"
+
+#. module: hfb_app_backorder_report
+#: model:ir.model,name:hfb_app_backorder_report.model_res_partner
+msgid "Contact"
+msgstr "Kontakt"
+
+#. module: hfb_app_backorder_report
+#: model:mail.template,name:hfb_app_backorder_report.mail_template_backorder_report
+msgid "Customer: Backorder Report"
+msgstr "Klient: raport zaległych dostaw"
+
+#. module: hfb_app_backorder_report
+#: model:ir.model.fields,field_description:hfb_app_backorder_report.field_res_company__display_name
+#: model:ir.model.fields,field_description:hfb_app_backorder_report.field_res_config_settings__display_name
+#: model:ir.model.fields,field_description:hfb_app_backorder_report.field_res_partner__display_name
+msgid "Display Name"
+msgstr "Nazwa wyświetlana"
+
+#. module: hfb_app_backorder_report
+#: model:ir.model.fields,help:hfb_app_backorder_report.field_res_partner__backorder_report_optout
+#: model:ir.model.fields,help:hfb_app_backorder_report.field_res_users__backorder_report_optout
+msgid "Do not send the scheduled backorder report to this customer."
+msgstr "Nie wysyłaj temu klientowi cyklicznego raportu zaległych dostaw."
+
+#. module: hfb_app_backorder_report
+#: model_terms:ir.ui.view,arch_db:hfb_app_backorder_report.res_config_settings_view_form_backorder_report
+msgid "E-mail customers on a schedule the list of products not delivered yet"
+msgstr "Cyklicznie wysyłaj klientom listę niewydanych produktów"
+
+#. module: hfb_app_backorder_report
+#: model:ir.model.fields,field_description:hfb_app_backorder_report.field_res_company__id
+#: model:ir.model.fields,field_description:hfb_app_backorder_report.field_res_config_settings__id
+#: model:ir.model.fields,field_description:hfb_app_backorder_report.field_res_partner__id
+msgid "ID"
+msgstr "ID"
+
+#. module: hfb_app_backorder_report
+#: model:ir.model.fields,field_description:hfb_app_backorder_report.field_res_partner__backorder_report_optout
+#: model:ir.model.fields,field_description:hfb_app_backorder_report.field_res_users__backorder_report_optout
+msgid "No Backorder Report"
+msgstr "Bez raportu zaległych dostaw"
+
+#. module: hfb_app_backorder_report
+#: model_terms:ir.ui.view,arch_db:hfb_app_backorder_report.res_config_settings_view_form_backorder_report
+msgid "Schedule"
+msgstr "Harmonogram"
+
+#. module: hfb_app_backorder_report
+#. odoo-python
+#: code:addons/hfb_app_backorder_report/models/res_partner.py:0
+#: model:ir.actions.server,name:hfb_app_backorder_report.action_send_backorder_report
+msgid "Send Backorder Report"
+msgstr "Wyślij raport zaległych dostaw"
+
+#. module: hfb_app_backorder_report
+#: model:ir.model.fields,field_description:hfb_app_backorder_report.field_res_company__backorder_report
+#: model:ir.model.fields,field_description:hfb_app_backorder_report.field_res_config_settings__backorder_report
+msgid "Send Backorder Reports to Customers"
+msgstr "Wysyłaj klientom raporty zaległych dostaw"
+
+#. module: hfb_app_backorder_report
+#. odoo-python
+#: code:addons/hfb_app_backorder_report/models/res_partner.py:0
+msgid "Waiting for stock"
+msgstr "Czeka na towar"
+
+#. module: hfb_app_backorder_report
+#: model:mail.template,subject:hfb_app_backorder_report.mail_template_backorder_report
+msgid "{{ object.env.company.name }} - products not delivered yet"
+msgstr "{{ object.env.company.name }} - produkty jeszcze niewydane"
