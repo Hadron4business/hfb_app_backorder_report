@@ -32,4 +32,4 @@ Scheduled e-mail to each customer listing the products not delivered yet, with t
 
 ## Status
 
-Odoo 20 build. Tested on the Odoo.sh test instances (automated RPC tests and manual tests, 2026-10-09). Missing before publication: icon, banner.
+Odoo 20 build. Tested on the Odoo.sh test instances (automated RPC tests and manual tests, 2026-10-09). Icon and banner included - ready for publication.
